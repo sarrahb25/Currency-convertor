@@ -70,8 +70,8 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/tr
 
 
 
+### API
 
-API
 POST http://localhost:8000/api/converter.php
     POST ?from=EUR&to=YEN&amount=10.22
 

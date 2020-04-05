@@ -8,18 +8,18 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import { conversion, display, history} from './store/reducers';
-import { convert } from './store/actions';
 
 const reducer = combineReducers({ conversion, display, history })
 const store = createStore(reducer, applyMiddleware(thunk, logger))
-store.dispatch(convert("100"));
 
 ReactDOM.render(
+  <Provider store={store}>
   <React.StrictMode>
-    <Provider store={store}>
+    
       <App />
-    </Provider>
-  </React.StrictMode>,
+   
+  </React.StrictMode>
+  </Provider>,
   document.getElementById('root')
 );
 

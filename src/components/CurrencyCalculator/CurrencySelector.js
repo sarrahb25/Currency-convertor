@@ -1,5 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { css } from 'emotion';
+import styles from './styles'
 
 const onChange = (id, onChange) => {
     let selectBox = document.getElementById(id)
@@ -9,7 +11,7 @@ const onChange = (id, onChange) => {
 
 const CurrencySelector = ({ id, onChangeCurrency,value }) => {
     return(
-        <select value={value} id={id} onChange={() => onChange(id, onChangeCurrency)} >
+        <select className={css(styles.selectorStyle)} value={value} id={id} onChange={() => onChange(id, onChangeCurrency)} >
             <option value="EUR">EUR</option>
             <option value="USD">USD</option>
             <option value="YEN">YEN</option>

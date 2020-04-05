@@ -8,8 +8,10 @@ const initialState = {
     amount: 0,
     convertedCurrency: 0,
     isRequested: false,
+    historyStore: [],
     currencyFrom: 'USD',
-    currencyTo: 'EUR'
+    currencyTo: 'EUR',
+    isDisplayed: false,
 }
 
 export const conversion = (state = initialState, action) => {
@@ -31,11 +33,13 @@ export const conversion = (state = initialState, action) => {
             })
 
         case RECEIVE_CONVERSION:
-            return Object.assign({}, state, {
+            return {
+                ...state,
                 convertedCurrency: action.value,
                 isRequested: false,
-                lastUpdatedAt: action.convertedAt
-            })
+                lastUpdatedAt: action.convertedAt,
+                isDisplayed: true,
+            }
 
         default:
             return state
@@ -50,14 +54,20 @@ const initialStateDisplay = {
 export const display = (state = initialStateDisplay, action) => {
     switch (action.type) {
         case RECEIVE_CONVERSION:
-            return Object.assign({}, state, {
-                isDisplayed: true,
+            const newObject = {isDisplayed: true, 
                 amount: action.amount,
                 value: action.value,
                 from: action.from,
                 to: action.to,
-                lastUpdatedAt: action.convertedAt,
-            })
+                lastUpdatedAt: action.convertedAt
+            }
+            const stateHistory = state.historyStore || []
+            const newHistoryStore = [...stateHistory , newObject]
+            return {
+                ...state,
+                ...newObject,
+                historyStore: newHistoryStore
+            }
             
         default:
             return state

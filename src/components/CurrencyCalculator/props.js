@@ -4,6 +4,8 @@ import { changeCurrencyFrom, changeCurrencyTo, convert, history } from "../../st
 export const mapStateConversionToProps = state => ({
     currencyFrom: state.conversion.currencyFrom,
     currencyTo: state.conversion.currencyTo,
+    isDisplayed: state.conversion.isDisplayed,
+    isReuested: state.conversion.isReuested
 })
 
 export const mapDispatchToProps = dispatch => ({
@@ -27,7 +29,8 @@ export const mapStateDisplayToProps = state => ({
     from: state.display.from,
     to: state.display.to,
     lastUpdatedAt: state.display.lastUpdatedAt,
-    isDisplayed: state.display.isDisplayed
+    isDisplayed: state.display.isDisplayed,
+    historyStore: state.historyStore
 })
 
 export const mapStateHistoryToProps = state => ({

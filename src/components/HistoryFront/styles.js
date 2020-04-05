@@ -1,6 +1,6 @@
 const styles = {
     historyDate: {
-        marginTop: '30px',
+        marginTop: '15px',
         color: 'grey',
         fontSize: '10px',
         paddings: 0
